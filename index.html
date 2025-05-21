@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Schedule</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f3f4f6;
+      color: #333;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #2563eb;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background-color: #3b82f6;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    tr:hover {
+      background-color: #f1f5f9;
+    }
+
+    @media (max-width: 768px) {
+      th, td {
+        padding: 10px;
+        font-size: 14px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .notify {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #10b981;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 8px;
+      display: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+  </style>
+</head>
+<body>
+
+<h1>My Daily Schedule</h1>
+
+<table>
+  <thead>
+    <tr><th colspan="2">Morning Routine (6:00 AM - 8:00 AM)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>6:00 AM - 6:30 AM</td><td>Morning exercise / meditation</td></tr>
+    <tr><td>6:30 AM - 7:00 AM</td><td>Breakfast and planning for the day</td></tr>
+    <tr><td>7:00 AM - 8:00 AM</td><td>Chores (laundry, cleaning, etc.)</td></tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr><th colspan="2">Study Sessions</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>8:00 AM - 9:30 AM</td><td>Physical Computing and IoT</td></tr>
+    <tr><td>9:30 AM - 9:45 AM</td><td>Break</td></tr>
+    <tr><td>9:45 AM - 11:15 AM</td><td>Computer Architecture</td></tr>
+    <tr><td>11:15 AM - 11:30 AM</td><td>Break</td></tr>
+    <tr><td>11:30 AM - 12:30 PM</td><td>Indigenous Language</td></tr>
+    <tr><td>12:30 PM - 1:30 PM</td><td>Lunch Break</td></tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr><th colspan="2">Afternoon Sessions</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1:30 PM - 3:00 PM</td><td>Machine Learning / AI</td></tr>
+    <tr><td>3:00 PM - 3:15 PM</td><td>Break</td></tr>
+    <tr><td>3:15 PM - 4:45 PM</td><td>Web Development</td></tr>
+    <tr><td>4:45 PM - 5:00 PM</td><td>Break</td></tr>
+    <tr><td>5:00 PM - 6:30 PM</td><td>LeetCode / Coding Challenges</td></tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr><th colspan="2">Evening Routine</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>6:30 PM - 7:30 PM</td><td>Dinner</td></tr>
+    <tr><td>7:30 PM - 8:30 PM</td><td>Free time (movies, relaxation, reading)</td></tr>
+    <tr><td>8:30 PM - 9:30 PM</td><td>Review and planning for the next day</td></tr>
+    <tr><td>9:30 PM - 10:30 PM</td><td>Wind down (meditation, stretching, etc.)</td></tr>
+    <tr><td>10:30 PM</td><td>Sleep</td></tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr><th colspan="2">Sunday</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>8:00 AM - 12:00 PM</td><td>Church services and Bible study</td></tr>
+    <tr><td>12:00 PM - 5:00 PM</td><td>Free time</td></tr>
+    <tr><td>5:00 PM - 6:00 PM</td><td>Dinner</td></tr>
+    <tr><td>6:00 PM - 10:00 PM</td><td>Free time</td></tr>
+    <tr><td>10:00 PM</td><td>Sleep</td></tr>
+  </tbody>
+</table>
+
+<div id="notify" class="notify"></div>
+
+<script>
+  const schedule = [
+      { time: "06:00", task: "Morning exercise/meditation" },
+      { time: "06:30", task: "Breakfast and planning" },
+      { time: "07:00", task: "Chores (laundry, cleaning, etc.)" },
+      { time: "08:00", task: "Physical Computing and IoT" },
+      { time: "09:30", task: "Break" },
+      { time: "09:45", task: "Computer Architecture" },
+      { time: "11:15", task: "Break" },
+      { time: "11:30", task: "Indigenous Language" },
+      { time: "12:30", task: "Lunch Break" },
+      { time: "13:30", task: "Machine Learning/AI" },
+      { time: "15:00", task: "Break" },
+      { time: "15:15", task: "Web Development" },
+      { time: "16:45", task: "Break" },
+      { time: "17:00", task: "LeetCode/Coding Challenges" },
+      { time: "18:30", task: "Dinner" },
+      { time: "19:30", task: "Free time (movies, relaxation)" },
+      { time: "20:30", task: "Review and next day planning" },
+      { time: "21:30", task: "Wind down (meditation/stretching)" },
+      { time: "22:30", task: "Sleep" }
+  ];
+
+  function checkTime() {
+    const now = new Date();
+    const current = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+    const match = schedule.find(s => s.time === current);
+    if (match) {
+      const notify = document.getElementById('notify');
+      notify.innerText = match.message;
+      notify.style.display = 'block';
+      setTimeout(() => notify.style.display = 'none', 6000);
+    }
+  }
+
+  setInterval(checkTime, 60000); // Check every minute
+</script>
+
+</body>
+</html>
